@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+.App {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+  background: linear-gradient(90deg, #96d870, rgb(196, 226, 184));
+}
+
+.navbar {
+  padding: 20px;
+  background-color: #96d870;
+}
