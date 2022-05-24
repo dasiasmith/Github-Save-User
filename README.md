@@ -20,8 +20,6 @@
 
   * [Contributing](#contributing)
 
-  * [Tests](#tests)
-
   * [Questions](#Questions)
 
   ## Installation
@@ -47,14 +45,6 @@
   ## Contributing
 
   For information on contributions please contact me.
-
-  ## Tests
-
-  To run tests, run the following command:
-
-  ```
-  npm test
-  ```
 
   ## Questions
 
