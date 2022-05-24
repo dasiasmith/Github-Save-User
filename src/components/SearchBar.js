@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import "./SearchBar.css";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
+import db from '../config/firebase';
 
 function SearchBar({ placeholder, data }) {
     const [url, setUrl] = useState('');
@@ -20,7 +21,7 @@ function SearchBar({ placeholder, data }) {
         fetch("https://api.github.com/users/")
         .then(res => res.json())
         .then(data => {
-        setData(data);
+        setData(null);
         });
     }, []);
 
@@ -40,21 +41,21 @@ function SearchBar({ placeholder, data }) {
     }
 
     const handleSubmit = (e) => {
-        if (e.key === 'Enter') {
-            fetch(`https://api.github.com/users/${userInput}`)
-            .then(res => res.json())
-            .then(data => {
-            if (data.message) {
-                setError(data.message)
-            }
-            else {
-                setData(data);
-                setError(null);
-                setResults("User Saved!")
-            }
-            })
-        }
-        
+            if (e.key === 'Enter') {
+                fetch(`https://api.github.com/users/${userInput}`)
+                .then(res => res.json())
+                .then(data => {
+                if (data.message) {
+                    setError(data.message)
+                }
+                else {
+                    setData(data);
+                    setError(null);
+                    setResults("User saved!")
+                    db.collection('users').add({data});
+                }
+                })
+            } 
     }
 
     const clearInput = () => {
@@ -104,4 +105,4 @@ function SearchBar({ placeholder, data }) {
     )
 }
 
-export default SearchBar
+export default SearchBar;
